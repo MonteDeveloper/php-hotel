@@ -94,10 +94,11 @@
                         <th class="table-dark">Distanza dal centro</th>
                     </tr>
                     <?php
+                    $isFiltered = $_GET["parking"] && $_GET["vote"] ? true : false;
                     $isParkingChecked = $_GET["parking"] == "on";
 
                     foreach ($hotels as $hotel) {
-                        if($_GET["vote"] <= $hotel['vote'] && $isParkingChecked == $hotel['parking']){
+                        if(!$isFiltered || $_GET["vote"] <= $hotel['vote'] && $isParkingChecked == $hotel['parking']){
                             echo '<tr>';
     
                             echo '<td class="table-dark">' . $hotel['name'] . '</td>';
